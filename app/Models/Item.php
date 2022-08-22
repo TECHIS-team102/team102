@@ -7,13 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-<<<<<<< HEAD
     use HasFactory;
     
-}
 
 
-=======
+
     protected $fillable = [
         'name',
         'user_id',
@@ -21,5 +19,12 @@ class Item extends Model
         'type',
         'detail'
     ];
+
+    const TYPE_NAME = [
+        '1' => '清掃用具',
+        '2' => '衛生用品',
+        '3' => '文房具',
+        '4' => '寝具類',
+        '5' => '料理器具',
+    ];
 }
->>>>>>> ceb82d4084fa0fc602a7b01f78ca18ad198b3742

@@ -7,36 +7,11 @@ use App\Models\Item;
 
 class HomeController extends Controller
 {
-       /**
-        * 一覧表示
-        *
-        * @param Request $request
-        * @return Response
-        */
+       
+                /**
+         * 一覧表示、検索機能
+         */
         public function home(Request $request)
-        {
-            $type_names = config('app.type_name');
-            $items = Item::orderBy('created_at', 'asc')->paginate(3);
-        return view('home.home', [
-            'items' => $items,
-            'type_names'=> $type_names,
-        ]);
-        }
-
-         /**
-         * 詳細画面の表示
-         */
-        public function detail($id)
-        {
-            $item = Item::find($id);
-
-            return view('home.detail', compact('item'));
-        }
-
-        /**
-         * 検索機能
-         */
-        public function index(Request $request)
         {
             $keyword = $request->input('keyword');
 
@@ -60,12 +35,28 @@ class HomeController extends Controller
                         $keyword = '5';
                         break;
                 }
-                $query->where('name', 'LIKE', "%{$keyword}%")
+                $query->where(function($query)use($keyword){
+                    $query->where('name', 'LIKE', "%{$keyword}%")
                     ->orWhere('type', 'LIKE', "%{$keyword}%");
+                });
+
+                
             }
 
-            $type_names = config('app.type_name');
-            $items = $query->orderByDesc('created_at')->paginate(3);
+            $type_names = Item::TYPE_NAME;
+            $items = $query->where('status',1)->orderByDesc('created_at')->paginate(3);
             return view('home.home', compact('items','type_names'));
         }
+
+         /**
+         * 詳細画面の表示
+         */
+        public function detail($id)
+        {
+            $item = Item::find($id);
+
+            return view('home.detail', compact('item'));
+        }
+
+
 }

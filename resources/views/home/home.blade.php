@@ -3,11 +3,11 @@
 @section('content')
  
 <!-- タスク一覧表示 -->
-@if (count($items) > 0)
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <div>
-            <form  action="{{ route('index')}}" method="GET">
+            <form  action="{{ route('home')}}" method="GET">
                 <input type="text" name="keyword" value="@if (isset($search)) {{ $search }} @endif">
                 <input type="submit" value="検索">
             </form>
@@ -17,8 +17,9 @@
             <input type="submit" value="ログアウト">
         </form> -->
     </div>
- 
+   
     <div class="panel-body table">
+    @if (count($items) > 0)
         <table class="table table-striped">
  
             <!-- テーブルヘッダ -->
@@ -52,8 +53,12 @@
                 
             </tbody>
         </table>
+        @else
+        <p>該当する商品はございません。</p>
+        @endif
     </div>
+   
 </div>
-@endif
+
 {{ $items->links() }}
 @endsection
