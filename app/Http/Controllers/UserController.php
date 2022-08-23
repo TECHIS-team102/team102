@@ -53,7 +53,13 @@ class UserController extends Controller
     
     //IDから管理者が編集
     public function update(Request $request)
-    {
+    {   
+    //    バリデーションの設定
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+			'tel' => ['required', 'string', 'max:255'],
+        ]);
         if ($request->admin==2) {
             $user=User::find($request->id);
             $user->name = $request->name;
@@ -64,10 +70,8 @@ class UserController extends Controller
         } else {
             return redirect("/user/edit/".$request->id);
         }
-        
-    
-        
-    } 
+         } 
+   
 }
 
     // 削除機能は今回使用しないpublic function danger(Request $request)

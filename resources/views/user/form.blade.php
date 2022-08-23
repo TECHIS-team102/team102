@@ -10,26 +10,92 @@
 </head>
 <body>
     <h1>編集フォーム</h1>
-   
-    <table>
-        <!-- action:どこに、method:どうやって、enctypr:どんな形で -->
-        <form action="/user/update" method="post">
-            <!-- @csrfを行うことによりエラーを少なくする 
-            input type=どのように表示させるか name:部品の名前。サーバに送られたとき、ラベルの役割をする
-            value:部品の初期値。valueに値を入れておくと、それが最初から入力されている。-->
-            @csrf
-            <input type="hidden" name="id" value="{{$user->id}}">
-            <tr><th>name: </th><<td><input type="text" name="name" value="{{$user->name}}"></td></tr>
-            <tr><th>mail: </th><<td><input type="text" name="email" value="{{$user->email}}"></td></tr>
-            <tr><th>tel: </th><<td><input type="text" name="tel" value="{{$user->tel}}"></td></tr>
-            <tr><th>管理者権限: </th><<td><input type="checkbox" name="admin" value=2></td></tr>
-            <!-- <tr><th>password: </th><<td><input type="text" name="password" value="{{$user->password}}"></td></tr> -->
-            
-            <tr><th></th><td><input type="submit" value="send"></td></tr>
-         
-        
+    <!-- バリデーションの設定 -->
+    @if (count($errors) > 0)
+    <ul class="alert alert-danger" role="alert">
+        @foreach ($errors->all() as $error)
+            <li class="ml-4">{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+    <!-- フォーム部分 -->
+<form action="/user/update" method="post">
+ 
+  @csrf
+    <input type="hidden" name="id" value="{{$user->id}}">
+  <!-- (1)ユーザー名 -->
+  <div class="form-group">
+    <label class="col-md-1 control-label" for="name" >名前</label>
+    <div class="col-md-10">
+      <input name="name"
+         class="form-control valid"
+         id="name"
+         type="text"
+         value="{{$user->name}}"
+         data-val-required="名前 フィールドが必要です。"
+         data-val="true">
+    </div>
+
+  </div>
+
+  <!-- (2)email-->
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="email">メールアドレス</label>
+
+    <div class="col-md-10">
+      <input name="email"
+         class="form-control
+         input-validation-error"
+         id="email"
+         type="email"
+         value="{{$user->email}}"
+         data-val-required="emailが必要です。"
+         data-val="true"
+         data-val-length-min="7"
+         data-val-length-max="100"
+         data-val-length="パスワード の長さは、7 文字以上である必要があります。">
+    </div>
+  </div>
+
+  <!-- (3)電話番号の確認 -->
+  <div class="form-group">
+    <label class="col-md-3 control-label" for="tel">電話</label>
+
+    <div class="col-md-10">
+      <input name="tel"
+         class="form-control
+         input-validation-error"
+         id="tel"
+         type="tel"
+         value="{{$user->tel}}"
+         data-val-required="telが必要です。"
+         data-val="true"
+         data-val-length="numeric"
+         data-val-length-min="8"
+         data-val-length-max="11"
+         data-val-length="電話番号は8文字以上11文字以内である必要があります。">
+    </div>
+  </div>
+
+  </div>
+  <!-- (4)管理者権限ボタン -->
+  <div class="form-group">
+  <div class="col-md-10">
+  <input type="checkbox" name="admin" value=2>
+    <label class="col-md-3 control-label" for="admin">管理者</label>
+    
+    </div>
+  </div>
+
+  <!-- (5)送信ボタン -->
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+      <input class="btn btn-default" type="submit" value="登録">
+    </div>
+  </div>
+
 </form>
-    </table>
+    
     
     
 </body>
