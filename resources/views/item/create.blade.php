@@ -8,12 +8,26 @@
 </head>
 <body>
     <h1>新規作成画面</h1>
-    <p><a href="{{ route('item')}}">一覧画面</a></p>
+    <p><a href="/item">一覧画面</a></p>
      
-    <form action="{{ route('create')}}" method="POST">
+    <form action="/item/create" method="POST">
         @csrf
-        <p>商品名：<input type="text" name="title" value="{{old('title')}}"></p>
-        <p>詳細：<input type="text" name="detail" value="{{old('detail')}}"></p>
+        <p>商品名：<input type="text" name="name" value="{{old('name')}}"></p>
+        <span>{{$errors->first('name')}}</span>
+        <P>商品種別:
+        <select name="type">
+         <option value=""></option>
+         @foreach($type as $key=>$val)
+         <option value="{{$key}}" {{old('type')==$key ? "selected" : ""}}>{{$val}}</option>
+         @endforeach
+         </select>
+        </P>
+        <span>{{$errors->first('type')}}</span>
+        <p>詳細：<textarea name="detail" cols="30" rows="10">{{old('detail')}}</textarea>
+        <span>{{$errors->first('detail')}}</span>
+       <!-- <P> <input type="radio" name="status" value="1">有効
+        <input type="radio" name="status" value="2">無効
+        </P> -->
         <input type="submit" value="登録する">
     </form>   
 </body>
