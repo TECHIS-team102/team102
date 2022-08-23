@@ -14,23 +14,28 @@
     @csrf
   <p>
   <label class="label" for="name">氏名</label>
-  <input type="text" name="name">
+  <input type="text" name="name" value="{{old('name')}}">
+@if($errors->has('name')) <span>{{$errors->first('name')}}</span>@endif
   </p>
   <p>
   <label class="label" for="email">メールアドレス</label>
-  <input type="text" name="email">
+  <input type="text" name="email" value="{{old('email')}}">
+  @if($errors->has('email')) <span>{{$errors->first('email')}}</span>@endif
   </p>
   <p>
   <label class="label" for="tel">電話番号</label>
-  <input type="text" name="tel">
+  <input type="text" name="tel" value="{{old('tel')}}">
+  @if($errors->has('tel')) <span>{{$errors->first('tel')}}</span>@endif
   </p>
   <p>
   <label class="label" for="password">パスワード</label>
   <input type="password" name="password">
+  @if($errors->has('password')) <span>{{$errors->first('password')}}</span>@endif
   </p>
   <p>
-  <label class="label" for="password2">パスワード</label>
-  <input type="password" name="password2">
+  <label class="label" for="password_confirmation">パスワード</label>
+  <input type="password" name="password_confirmation">
+  @if($errors->has('password_confirmation')) <span>{{$errors->first('password_confirmation')}}</span>@endif
   </p>
 
   <input type="submit" class="btn btn-info" value="登録">
