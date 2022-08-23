@@ -17,7 +17,7 @@ Route::post('/account/auth', [App\Http\Controllers\AccountController::class, 'au
 Route::get('/account/form', [App\Http\Controllers\AccountController::class, 'form']);
 Route::post('/account/register', [App\Http\Controllers\AccountController::class, 'register']);
 Route::get('/logout', [App\Http\Controllers\AccountController::class, 'logout']);
-
+ 
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
 Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update']);
