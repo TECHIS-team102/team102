@@ -7,6 +7,16 @@ use App\Models\Item;
  
 class ItemController extends Controller
 {
+   private $rule= [
+        'name' => 'required',
+        'type' => 'required' ,
+        'detail' => 'required'
+    ];
+    private $msg= [
+        'name.required' => '商品名は必須です',
+        'type.required' => '種別選択は必須です' ,
+        'detail.required' => '詳細説明は必須です'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +35,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('item.create');
+        $type=item::TYPE_NAME;
+        return view('item.create',compact('type'));
     }
  
     /**
@@ -36,8 +47,16 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        item::create($request->all());
-        return redirect()->route('item.item')->with('success', '新規登録完了しました');
+        $request->validate($this->rule,$this->msg);
+
+        item::create( [
+            'name' =>$request->name,
+            'user_id'=> 1,
+            'status'=> 1,
+            'type' =>$request->type,
+            'detail' => $request->detail,
+           ]);
+        return redirect('/item');
     }
  
     /**
@@ -46,9 +65,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $book = item::find($id);
+        $book = item::find($request->id);
         return view('item.show', compact('item'));
     }
  
@@ -58,10 +77,11 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $item = item::find($id);
-        return view('item.edit', compact('item'));
+        $type=item::TYPE_NAME;
+        $item = item::find($request->id);
+        return view('item.edit', compact('item','type'));
     }
  
     /**
@@ -71,16 +91,17 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $request->validate($this->rule,$this->msg);
         $update = [
-            'title' => $request->title,
-            'detail' => $request->detail
+            'name' => $request->name,
+            'detail' => $request->detail,
+            'detail' => $request->type
         ];
-        item::where('id', $id)->update($update);
-        return back()->with('success', '編集完了しました');
+        item::where('id', $request->id)->update($update);
+        return redirect('/item');
     }
- 
     /**
      * Remove the specified resource from storage.
      *
