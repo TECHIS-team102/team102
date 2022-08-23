@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
 {
@@ -23,7 +27,18 @@ class AccountController extends Controller
 
     public function register(Request $request)
     {
-      // return view('login'); 
+      //バリデーション
+
+
+      User::create(
+        [
+         'name' => $request->name,
+         'tel' => $request->tel,
+         'email' => $request->email,
+         'role' => 1,
+         'password' => Hash::make($request->password),
+        ]
+       );
     }
 
     public function logout(Request $request)
