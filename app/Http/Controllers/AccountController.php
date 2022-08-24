@@ -75,7 +75,8 @@ class AccountController extends Controller
 
     public function logout(Request $request)
     {
-      // return view('login'); 
+      Auth::logout(); 
+      return redirect('/login');
     }
 
 

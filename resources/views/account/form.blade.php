@@ -9,6 +9,8 @@
         <div class="container-sm">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+<body>
+  <div class="container">
   <h1>新規ユーザー登録</h1>
   <form action="/account/register" method="post">
     @csrf
@@ -41,5 +43,6 @@
   <input type="submit" class="btn btn-info" value="登録">
   </form>
 </div>
-
+</div>
+</body>
 </html>

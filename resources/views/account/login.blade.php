@@ -13,6 +13,8 @@ label, input[type=text]{
 }
 </style>
 </head>
+<body>
+  <div class="container">
         <form action="/account/auth" method="post">
           @csrf
           <label class="label" for="email">メールアドレス</label>
@@ -24,6 +26,7 @@ label, input[type=text]{
         @if($errors->has('msg')) <span>{{$errors->first('msg')}}</span>@endif
         <a href="/account/form">アカウント未作成の方はこちら</a>
 
-
+</div>
+</body>
 
 </html>
