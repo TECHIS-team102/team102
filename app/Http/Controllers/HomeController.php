@@ -44,7 +44,7 @@ class HomeController extends Controller
             }
 
             $type_names = Item::TYPE_NAME;
-            $items = $query->where('status',1)->orderByDesc('created_at')->paginate(3);
+            $items = $query->where('status',1)->orderByDesc('created_at')->paginate(1);
             return view('home.home', compact('items','type_names'));
         }
 
