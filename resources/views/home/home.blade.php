@@ -6,11 +6,13 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
+        <h1 class="text-center">日用品管理システム</h1>
         <div>
-            <form  action="{{ route('home')}}" method="GET">
-                <input type="text" name="keyword" value="@if (isset($search)) {{ $search }} @endif">
+            <form class="text-center"  action="{{ route('home')}}" method="GET">
+                <input type="text" name="keyword" placeholder="名前または種別を入力" value="@if (isset($search)) {{ $search }} @endif">
                 <input type="submit" value="検索">
             </form>
+            <!-- <p class="text-center text-muted" >名前または種別を入力してください</p> -->
         </div>
         <!-- <form action="{{-- route('logout') --}}" method="post"> -->
             <!-- @csrf
@@ -23,6 +25,7 @@
         <table class="table table-striped">
  
             <!-- テーブルヘッダ -->
+            
             <thead>
                 <th>名前</th>
                 <th>種別</th>
@@ -54,11 +57,12 @@
             </tbody>
         </table>
         @else
-        <p>該当する商品はございません。</p>
+        <p class="text-center pt-5">該当する商品はございません。</p>
         @endif
     </div>
    
 </div>
-
-{{ $items->links() }}
+<div class="d-flex justify-content-center">
+{{ $items->appends(request()->input())->links() }}
+</div>
 @endsection
