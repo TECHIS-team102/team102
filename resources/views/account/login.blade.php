@@ -22,11 +22,11 @@ label, input[type=text]{
           <table class="table">
         <tr>
           <td class="font-weight-bold"><label class="label" for="email">メールアドレス</label></td>
-          <td><input class="font-weight-bold" id="email" type="text" name="email" value="{{old('email')}}"></td>
+          <td><input class="form-control" id="email" type="text" name="email" value="{{old('email')}}"></td>
         </tr>
         <tr>
           <td class="font-weight-bold"><label class="label" for="password">パスワード</label></td>
-          <td><input class="font-weight-bold" id="password" type="password" name="password" value="{{old('email')}}"></td>
+          <td><input class="form-control" id="password" type="password" name="password" value="{{old('email')}}"></td>
         </tr>
         </table>
           <input type="submit" class="btn btn-secondary mx-auto d-block" value="ログイン">
