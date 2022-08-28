@@ -17,9 +17,11 @@
 <body> 
 <!-- @incledeを表示させたいbodyに貼ってもらう -->
 @include('parts.header')
+<!-- Bootstrapのときは囲みをcontainrにする -->
 <div class="containr">
     
     <h1 class="text-center">ユーザー一覧画面</h1>
+    <!--mx-auto要素を真ん中に、px-5左右のパディングを5ずつ空ける-->
     <main class="mx-auto px-5">
     
     <form method="GET" action="/user">
@@ -48,6 +50,7 @@
 		
       <tr>
 			<td>{{ $user -> id }}</td>
+            <!-- usernameに編集のリンクを貼る -->
 			<td><a href="/user/edit/{{$user->id}}">{{ $user -> name }}</a></td>
 			<td>{{ $user -> email }}</td>
             <td>{{ $user -> tel }}</td>

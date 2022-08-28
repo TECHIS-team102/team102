@@ -13,6 +13,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/item">商品管理</a>
+                </li>    
+                 <li class="nav-item">
+                    <a class="nav-link" href="/account">ログアウト</a>
                 </li>
             </ul>
         </div>
