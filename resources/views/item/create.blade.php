@@ -12,7 +12,7 @@
 <body>
 @include('parts.header')
 <div class="container">
-    <h1>新規作成画面</h1>
+    <h1>新規作成画面（管理）</h1>
     <p><a href="/item">一覧画面</a></p>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
     <form action="/item/create" method="POST">

@@ -11,7 +11,7 @@
 <body>
 @include('parts.header')
 <div class="container">
-<h1 class="center-block">編集画面</h1>
+<h1 class="center-block">編集画面（管理）</h1>
 <p><a href="/item">一覧画面</a></p>
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <P>商品番号：{{$item->id}}
