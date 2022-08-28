@@ -98,7 +98,7 @@ class ItemController extends Controller
         $update = [
             'name' => $request->name,
             'detail' => $request->detail,
-            'detail' => $request->type
+            'type' => $request->type
         ];
         item::where('id', $request->id)->update($update);
         return redirect('/item');
