@@ -24,8 +24,9 @@ class ItemController extends Controller
      */
     public function item()
     {
+        $type=item::TYPE_NAME;
         $items = item::all();
-        return view('item.item', compact('items'));
+        return view('item.item', compact('items','type'));
     }
  
     /**
@@ -67,7 +68,7 @@ class ItemController extends Controller
      */
     public function show(Request $request)
     {
-        $book = item::find($request->id);
+        $item = item::find($request->id);
         return view('item.show', compact('item'));
     }
  
@@ -97,7 +98,7 @@ class ItemController extends Controller
         $update = [
             'name' => $request->name,
             'detail' => $request->detail,
-            'detail' => $request->type
+            'type' => $request->type
         ];
         item::where('id', $request->id)->update($update);
         return redirect('/item');

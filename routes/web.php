@@ -25,10 +25,10 @@ Route::group(['middleware' => ['auth', 'can:admin-role']], function () {
 
     Route::get('/item/create', [App\Http\Controllers\ItemController::class, 'create'])->name('create');
     Route::post('/item/create', [App\Http\Controllers\ItemController::class, 'store'])->name('create');
-    Route::get('/item/item',[\App\Http\Controllers\ItemController::class, 'item'])->name('item');
-    Route::get('/item/edit', [App\Http\Controllers\ItemController::class, 'edit']);
-    Route::get('/item/show', [App\Http\Controllers\ItemController::class, 'show']);
-
+    Route::post('/item/update', [App\Http\Controllers\ItemController::class, 'update']);
+    Route::get('/item',[\App\Http\Controllers\ItemController::class, 'item'])->name('item');
+    Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
+ 
 });
 Route::group(['middleware' => ['auth', 'can:user-role']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
