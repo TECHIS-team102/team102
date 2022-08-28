@@ -21,6 +21,7 @@
 </head>
  
 <body>
+@include('parts.header')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -71,7 +72,7 @@
             </div>
         </nav>
  
-        <main class="py-4 w-auto mx-5 p-3">
+        <main class="py-4 mx-5 p-3">
             @yield('content')
         </main>
     </div>
