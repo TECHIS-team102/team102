@@ -14,18 +14,26 @@ label, input[type=text]{
 </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container text-center mt-3">
+  <h3 class="text-center mt-5">商品管理システム</h3>
+  <main class="mx-auto px-5 col-md-8">
         <form action="/account/auth" method="post">
           @csrf
-          <label class="label" for="email">メールアドレス</label>
-          <input id="email" type="text" name="email">
-          <label class="label" for="password">パスワード</label>
-          <input id="password" type="password" name="password">
-          <input type="submit">
+          <table class="table">
+        <tr>
+          <td class="font-weight-bold"><label class="label" for="email">メールアドレス</label></td>
+          <td><input class="font-weight-bold" id="email" type="text" name="email" value="{{old('email')}}"></td>
+        </tr>
+        <tr>
+          <td class="font-weight-bold"><label class="label" for="password">パスワード</label></td>
+          <td><input class="font-weight-bold" id="password" type="password" name="password" value="{{old('email')}}"></td>
+        </tr>
+        </table>
+          <input type="submit" class="btn btn-secondary mx-auto d-block" value="ログイン">
         </form>
         @if($errors->has('msg')) <span>{{$errors->first('msg')}}</span>@endif
         <a href="/account/form">アカウント未作成の方はこちら</a>
-
+</main>
 </div>
 </body>
 
