@@ -44,7 +44,7 @@
                     </td>
                      <!-- ID -->
                      <td class="table-text text-center">
-                        <div>{{$item-> user_id }}</div>
+                        <div>{{$item-> id }}</div>
                     </td>
                     <!-- 種別 -->
                     <td class="table-text text-center">
