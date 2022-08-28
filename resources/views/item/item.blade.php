@@ -15,7 +15,7 @@
 <p><a href="/item/create">新規追加</a></p>
  
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<table border="1">
+<table class="table">
     <tr>
         <th>商品番号</th></th>
         <th>商品名 </th>
