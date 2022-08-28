@@ -1,7 +1,8 @@
 <h1>編集画面</h1>
 <p><a href="/item">一覧画面</a></p>
  
- 
+<P>商品番号：{{$item->id}}
+</P> 
 <form action="/item/update" method="POST">
         @csrf
         <p>商品名：<input type="text" name="name" value="{{old('name', $item->name)}}"></p>
