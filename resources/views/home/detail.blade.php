@@ -15,7 +15,7 @@
     <tr>
       <th class="text-center">商品ID</th>
     </tr>
-    <td class="text-center">{{ $item->user_id }}</td>
+    <td class="text-center">{{ $item->id }}</td>
     <tr>
     <th class="text-center">詳細</th>
     </tr>
