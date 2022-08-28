@@ -11,7 +11,7 @@
 <body>
 @include('parts.header')
     <div class="container">
-<h1>一覧画面</h1>
+<h1>一覧画面（管理）</h1>
 <p><a href="/item/create">新規追加</a></p>
  
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
