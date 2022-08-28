@@ -11,38 +11,46 @@
 </head>
 <body>
   <div class="container">
-  <h1>新規ユーザー登録</h1>
+  <h3 class="text-center mt-3">新規ユーザー登録</h3>
+  <main class="mx-auto px-5 col-md-8">
   <form action="/account/register" method="post">
     @csrf
-  <p>
-  <label class="label" for="name">氏名</label>
-  <input type="text" name="name" value="{{old('name')}}">
+  <table class="table">
+    <tr>
+  <td class="font-weight-bold">氏名</td>
+  <td><input class="form-control" type="text" name="name" value="{{old('name')}}">
 @if($errors->has('name')) <span>{{$errors->first('name')}}</span>@endif
-  </p>
-  <p>
-  <label class="label" for="email">メールアドレス</label>
-  <input type="text" name="email" value="{{old('email')}}">
+</td>
+</tr>
+<tr>
+  <td class="font-weight-bold">メールアドレス</td>
+  <td><input class="form-control" type="text" name="email" value="{{old('email')}}">
   @if($errors->has('email')) <span>{{$errors->first('email')}}</span>@endif
-  </p>
-  <p>
-  <label class="label" for="tel">電話番号</label>
-  <input type="text" name="tel" value="{{old('tel')}}">
+  </td>
+</tr>
+<tr>
+  <td class="font-weight-bold">電話番号</td>
+  <td><input class="form-control" type="text" name="tel" value="{{old('tel')}}">
   @if($errors->has('tel')) <span>{{$errors->first('tel')}}</span>@endif
-  </p>
-  <p>
-  <label class="label" for="password">パスワード</label>
-  <input type="password" name="password">
+</td>
+</tr>
+<tr>
+  <td class="font-weight-bold">パスワード</td>
+  <td><input class="form-control" type="password" name="password">
   @if($errors->has('password')) <span>{{$errors->first('password')}}</span>@endif
-  </p>
-  <p>
-  <label class="label" for="password_confirmation">パスワード</label>
-  <input type="password" name="password_confirmation">
+</td>
+</tr>
+<tr>
+  <td class="font-weight-bold">パスワード確認</td>
+  <td><input class="form-control" type="password" name="password_confirmation">
   @if($errors->has('password_confirmation')) <span>{{$errors->first('password_confirmation')}}</span>@endif
-  </p>
-
-  <input type="submit" class="btn btn-info" value="登録">
+</td>
+</tr>
+</table>
+  <input type="submit" class="btn btn-info mx-auto d-block" value="登　録">
   </form>
 </div>
+</main>
 </div>
 </body>
 </html>
