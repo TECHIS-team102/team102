@@ -62,6 +62,7 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+                                
                             </div>
                         </li>
                         @endguest
@@ -70,7 +71,7 @@
             </div>
         </nav>
  
-        <main class="py-4">
+        <main class="py-4 w-auto mx-5 p-3">
             @yield('content')
         </main>
     </div>

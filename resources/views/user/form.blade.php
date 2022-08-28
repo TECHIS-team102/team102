@@ -81,7 +81,7 @@
   <!-- (4)管理者権限ボタン -->
   <div class="form-group">
   <div class="col-md-10">
-  <input type="checkbox" name="admin" value=2>
+  <input type="checkbox" name="admin" value="on" {{ $user->role == 2 ? 'checked' : '' }}>
     <label class="col-md-3 control-label" for="admin">管理者</label>
     
     </div>

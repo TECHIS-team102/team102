@@ -60,16 +60,16 @@ class UserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
 			'tel' => ['required', 'string', 'max:255'],
         ]);
-        if ($request->admin==2) {
+       
             $user=User::find($request->id);
             $user->name = $request->name;
             $user->email = $request->email;
             $user->tel = $request->tel;
+            // 三項演算子、式の結果がTRUEの場合は真の式を返し、結果がFALSEの場合は偽の式を返す
+            $user->role = $request->admin == 'on' ? 2 : 1;
             $user->save();
             return redirect("/user");
-        } else {
-            return redirect("/user/edit/".$request->id);
-        }
+        
          } 
    
 }
