@@ -54,8 +54,9 @@
 			<td><a href="/user/edit/{{$user->id}}">{{ $user -> name }}</a></td>
 			<td>{{ $user -> email }}</td>
             <td>{{ $user -> tel }}</td>
-            <td>{{ $user -> updated_at }}</td>
             <td>{{ $user -> created_at }}</td>
+            <td>{{ $user -> updated_at }}</td>
+            
             <td>
             <!-- userのroleが1なら -->
              @if($user->role==1)   
