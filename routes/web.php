@@ -18,8 +18,7 @@ Route::get('/account/form', [App\Http\Controllers\AccountController::class, 'for
 Route::post('/account/register', [App\Http\Controllers\AccountController::class, 'register']);
 Route::get('/logout', [App\Http\Controllers\AccountController::class, 'logout'])->name('logout');
 
-// Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
-// Route::group(['middleware' => ['auth', 'can:admin-role']], function () {
+Route::group(['middleware' => ['auth', 'can:admin-role']], function () {
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
     Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update']);
@@ -30,7 +29,7 @@ Route::get('/logout', [App\Http\Controllers\AccountController::class, 'logout'])
     Route::get('/item',[\App\Http\Controllers\ItemController::class, 'item'])->name('item');
     Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit']);
  
-// });
+});
 Route::group(['middleware' => ['auth', 'can:user-role']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
     Route::get('/home/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('detail');
