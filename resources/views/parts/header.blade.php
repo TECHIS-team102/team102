@@ -8,12 +8,14 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/home">ホーム</a>
                 </li>
+                @can('admin-role')
                 <li class="nav-item">
                     <a class="nav-link" href="/user">ユーザー管理</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/item">商品管理</a>
-                </li>    
+                </li>  
+                @endcan
                  <li class="nav-item">
                     <a class="nav-link" href="/logout">ログアウト</a>
                 </li>
