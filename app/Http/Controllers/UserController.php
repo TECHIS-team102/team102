@@ -22,12 +22,12 @@ class UserController extends Controller
         // もし検索フォームにキーワードが入力されたら
         if ($search) {
             //SQL発行しただけ
-            $query->where('name', 'like', '%'.$search.'%');
+            $query->where('name', 'like', '%'.$search.'%')->orderBy('id');
             //実際に検索実行、Getでも可能
             $users=$query->paginate(10);
         } else {
         
-            $users = User::paginate(10); 
+            $users = User::orderBy('id')->paginate(10); 
         }
         return view("user.index" ,[
             'users' => $users,
